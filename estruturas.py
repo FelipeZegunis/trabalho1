@@ -1,26 +1,14 @@
-#Menu em Python
-# Estruturas de Dados e Ordenação
-# Pilha, Fila e Fila Circular + Bubble, Selection e Insertion Sort
-# Todas as estruturas usam o MESMO vetor: "dados"
+dados = []        
+tipo = None       
+tamanho = 0       
 
-# ---------------------------------------------------------------
-# Variáveis globais (vetor único e controles de cada estrutura)
-# ---------------------------------------------------------------
-dados = []        # vetor usado por pilha, fila e fila circular
-tipo = None       # "pilha", "fila" ou "circular" (None = nada criado)
-tamanho = 0       # capacidade do vetor
-
-topo = -1         # controle da pilha
-inicio = 0        # controle da fila e da fila circular
-fim = 0           # controle da fila (próxima posição livre)
-qtd = 0           # controle da fila circular (número de elementos)
+topo = -1         
+inicio = 0        
+fim = 0          
+qtd = 0           
 
 LARGURA = 36
 
-
-# ---------------------------------------------------------------
-# Funções auxiliares de interface
-# ---------------------------------------------------------------
 def mostrar_menu(titulo, opcoes):
     print("*" * (LARGURA + 2))
     print("| " + titulo.ljust(LARGURA - 2) + " |")
@@ -45,9 +33,6 @@ def estrutura_existe(esperado):
     return True
 
 
-# ---------------------------------------------------------------
-# PILHA
-# ---------------------------------------------------------------
 def pilha_init():
     global dados, tipo, tamanho, topo
     n = ler_inteiro("Tamanho da pilha: ")
@@ -88,9 +73,6 @@ def pilha_show():
     print("topo =", topo)
 
 
-# ---------------------------------------------------------------
-# FILA (linear)
-# ---------------------------------------------------------------
 def fila_init():
     global dados, tipo, tamanho, inicio, fim
     n = ler_inteiro("Tamanho da fila: ")
@@ -132,9 +114,6 @@ def fila_show():
     print(f"início = {inicio}, fim = {fim}")
 
 
-# ---------------------------------------------------------------
-# FILA CIRCULAR
-# ---------------------------------------------------------------
 def circular_init():
     global dados, tipo, tamanho, inicio, qtd
     n = ler_inteiro("Tamanho da fila circular: ")
@@ -182,9 +161,6 @@ def circular_show():
     print(f"início = {inicio}, quantidade = {qtd}")
 
 
-# ---------------------------------------------------------------
-# ALGORITMOS DE ORDENAÇÃO (atuam no vetor "dados")
-# ---------------------------------------------------------------
 def bubble_sort(v, ini, fim_excl):
     n = fim_excl - ini
     for i in range(n - 1):
@@ -233,8 +209,6 @@ def intervalo_para_ordenar():
         return 0, topo + 1
     if tipo == "fila":
         return inicio, fim
-    # Fila circular: os elementos podem "dar a volta" no vetor.
-    # Antes de ordenar, reposicionamos tudo a partir do índice 0.
     itens = circular_elementos()
     for i in range(tamanho):
         dados[i] = None
@@ -244,9 +218,6 @@ def intervalo_para_ordenar():
     return 0, qtd
 
 
-# ---------------------------------------------------------------
-# MENUS
-# ---------------------------------------------------------------
 def menu_principal():
     while True:
         print("\n")
@@ -388,9 +359,6 @@ def ordenar():
             print("Opção inexistente")
 
 
-# ---------------------------------------------------------------
-# Programa principal
-# ---------------------------------------------------------------
 while True:
     opt1 = menu_principal()
 
